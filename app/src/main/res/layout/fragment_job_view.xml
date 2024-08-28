@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FEFEFE"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/backAction"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?selectableItemBackground"
+        app:contentPadding="12dp"
+        app:cardElevation="40dp"
+        app:strokeWidth="0dp"
+        android:layout_margin="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/baseline_arrow_back_24" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout2"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:paddingBottom="10dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/work_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                app:layout_constraintTop_toBottomOf="@id/imageView2"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/textView_title"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    tools:text="Job Title" />
+
+
+                <TextView
+                    android:id="@+id/textView_salary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView_title"
+                    android:fontFamily="@font/poppins"
+                    app:drawableStartCompat="@drawable/round_currency_rupee_24"
+                    tools:text="Salary - Range" />
+
+                <!--            <ImageView-->
+                <!--                android:layout_width="30dp"-->
+                <!--                android:layout_height="30dp"-->
+                <!--                android:layout_marginStart="4dp"-->
+                <!--                android:layout_marginTop="4dp"-->
+                <!--                android:layout_marginEnd="4dp"-->
+                <!--                android:layout_marginBottom="4dp"-->
+                <!--                app:srcCompat="@drawable/twotone_bookmark_24"-->
+                <!--                app:tint="@color/my_light_primary" />-->
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView_salary"
+                    android:layout_marginTop="24dp"
+                    android:backgroundTint="#E1E1E1"
+                    app:contentPadding="4dp"
+                    app:strokeWidth="0dp">
+
+                    <ImageView
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:contentDescription="Logo"
+                        app:srcCompat="@drawable/company" />
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <TextView
+                    android:id="@+id/textView_company"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/imageView"
+                    android:layout_marginStart="12dp"
+                    android:layout_toEndOf="@+id/imageView"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="#000"
+                    tools:text="Organisation name" />
+
+                <TextView
+                    android:id="@+id/textView_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView_company"
+                    android:layout_marginStart="12dp"
+                    android:layout_toEndOf="@+id/imageView"
+                    android:drawablePadding="4dp"
+                    android:drawableTint="#49454F"
+                    android:fontFamily="@font/poppins_medium"
+                    app:drawableEndCompat="@drawable/round_location_on_24"
+                    tools:text="Location" />
+
+
+            </RelativeLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:elevation="0dp"
+                app:cardBackgroundColor="#E7F3FE"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/relativeLayout"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:paddingStart="8dp"
+                        android:textColor="#0E56A8"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="2dp"
+                        android:textSize="11sp"
+                        android:text="Vacancies:" />
+
+                    <TextView
+                        android:id="@+id/openings_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:paddingStart="1dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="8dp"
+                        android:textSize="11sp"
+                        android:paddingBottom="2dp"
+                        android:text="40"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:elevation="0dp"
+                app:cardBackgroundColor="#fff"
+                app:layout_constraintEnd_toStartOf="@+id/views"
+                app:layout_constraintStart_toEndOf="@id/materialCardView"
+                app:layout_constraintTop_toBottomOf="@id/relativeLayout">
+
+
+                <TextView
+                    android:id="@+id/job_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:paddingStart="8dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="8dp"
+                    android:textSize="11sp"
+                    android:paddingBottom="2dp"
+                    android:text="Telemarketing and Sales" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/views"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:drawableTint="#8F8F8F"
+                android:fontFamily="@font/poppins"
+                android:paddingStart="8dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="2dp"
+                android:text="25000"
+                android:textSize="10sp"
+                app:drawableStartCompat="@drawable/view_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.926"
+                app:layout_constraintStart_toEndOf="@+id/materialCardView"
+                app:layout_constraintTop_toTopOf="@+id/materialCardView" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/pref_Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:elevation="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+                app:strokeWidth="0dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/textView99"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Job Preferences" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView99"
+
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Experience:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/Experience"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView99"
+                        android:layout_marginStart="14dp"
+                        android:layout_toEndOf="@+id/textView2"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="1 years" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView2"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Qualifications:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/Qualification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView2"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_toEndOf="@+id/textView3"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="B.E/B Tech" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView3"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Gender:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/Gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView3"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_toEndOf="@+id/textView4"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Male" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView4"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Job type:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/job_hours"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView4"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_toEndOf="@+id/textView6"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Full time" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView6"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Shift timings:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/Shift_timing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView6"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_toEndOf="@+id/textView7"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Day Shift" />
+
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:elevation="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pref_Card"
+                app:strokeWidth="0dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/textView88"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Job Description" />
+
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView88"
+
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="@color/black"
+                        tools:text="@tools:sample/lorem" />
+
+                    <TextView
+                        android:id="@+id/other_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/title"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        tools:text="tools:sample/lorem/random" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_call"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
+            android:text="Call"
+            app:backgroundTint="#000"
+            app:icon="@drawable/sharp_call_24"
+            app:strokeWidth="2dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_wa"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_toStartOf="@+id/button_call"
+            android:text="WhatsApp"
+            app:backgroundTint="#12A14E"
+            app:icon="@drawable/whatsapp"
+            app:strokeWidth="2dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/poppins"
+            android:gravity="center_vertical"
+            android:paddingTop="4dp"
+            android:text="Apply before:"
+            android:textSize="11sp"
+            app:drawableStartCompat="@drawable/baseline_calendar_today_24"
+            app:drawableTint="#919191" />
+
+        <TextView
+            android:id="@+id/expire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView"
+            android:layout_alignEnd="@id/textView"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/poppins"
+            android:gravity="center_vertical"
+            android:text="2024-02-01"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

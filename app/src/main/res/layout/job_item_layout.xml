@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:viewBindingIgnore="true"
+    android:padding="16dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardparent"
+        android:layout_width="match_parent"
+        android:elevation="16dp"
+        android:visibility="visible"
+        android:layout_height="wrap_content"
+        app:contentPadding="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView_title"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                tools:text="Job Title"/>
+
+
+            <TextView
+                android:id="@+id/textView_salary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView_title"
+                android:fontFamily="@font/poppins"
+                tools:text="Salary - Range"
+                app:drawableStartCompat="@drawable/round_currency_rupee_24" />
+
+<!--            <ImageView-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_marginStart="4dp"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:layout_marginEnd="4dp"-->
+<!--                android:layout_marginBottom="4dp"-->
+<!--                app:srcCompat="@drawable/twotone_bookmark_24"-->
+<!--                app:tint="@color/my_light_primary" />-->
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:strokeWidth="0dp"
+                android:backgroundTint="#E1E1E1"
+                app:contentPadding="4dp"
+                android:id="@+id/imageView"
+                android:layout_below="@id/textView_salary">
+                <ImageView
+                    android:layout_width="42dp"
+                    app:srcCompat="@drawable/company"
+                    android:layout_height="42dp"
+                    android:contentDescription="Logo" />
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <TextView
+                android:id="@+id/textView_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_alignTop="@+id/imageView"
+                android:layout_marginStart="12dp"
+                android:textColor="#000"
+                android:layout_toEndOf="@+id/imageView"
+                tools:text="Organisation name" />
+
+            <TextView
+                android:id="@+id/textView_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_below="@id/textView_company"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@+id/imageView"
+                tools:text="Location"
+                android:drawableTint="#49454F"
+                app:drawableEndCompat="@drawable/round_location_on_24" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                app:backgroundTint="#000"
+                android:id="@+id/button_call"
+                android:layout_toEndOf="@id/button_wa"
+                android:layout_marginTop="12dp"
+                android:layout_below="@id/imageView"
+                app:icon="@drawable/sharp_call_24"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_height="wrap_content"
+                app:strokeWidth="2dp"
+                android:text="Call"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_wa"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_below="@id/imageView"
+                android:layout_marginTop="12dp"
+                android:text="WhatsApp"
+                app:backgroundTint="#12A14E"
+                app:icon="@drawable/whatsapp"
+                app:strokeWidth="2dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/btnsave"
+                android:layout_below="@id/imageView"
+                style="@style/Widget.Material3.Button.IconButton.Outlined"
+                app:icon="@drawable/twotone_bookmark_24"/>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <ImageView
+        android:id="@+id/banner"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:visibility="visible"/>
+</LinearLayout>

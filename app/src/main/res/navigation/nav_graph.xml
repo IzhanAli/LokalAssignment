@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/jobsFragment">
+
+    <fragment
+        android:id="@+id/jobsFragment"
+        android:name="com.lokalassignment.applokal.ui.fragments.JobsFragment"
+        android:label="JobsFragment" >
+        <action
+            app:enterAnim="@anim/slide_in"
+            android:id="@+id/action_jobsFragment_to_viewJobFragment"
+            app:destination="@id/viewJobFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookmarksFragment"
+        android:name="com.lokalassignment.applokal.ui.fragments.BookmarksFragment"
+        android:label="BookmarksFragment" >
+        <action
+            android:id="@+id/action_bookmarksFragment_to_viewJobFragment"
+            app:enterAnim="@anim/slide_in"
+            app:destination="@id/viewJobFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewJobFragment"
+        android:name="com.lokalassignment.applokal.ui.fragments.ViewJobFragment"
+        android:label="ViewJobFragment" />
+</navigation>
