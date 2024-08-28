@@ -37,7 +37,7 @@ class JobsFragment : Fragment(R.layout.fragment_jobs) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity(), SharedViewModelFactory(requireActivity().application)).get(JobViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(JobViewModel::class.java)
 
         shimmer = view.findViewById(R.id.shimmer_view)
         status = view.findViewById(R.id.loadstatus)

@@ -39,7 +39,7 @@ class ViewJobFragment : Fragment(R.layout.fragment_job_view) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(requireActivity(), SharedViewModelFactory(requireActivity().application)).get(JobViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(JobViewModel::class.java)
 
         binding.backAction.setOnClickListener(){
             requireActivity().onBackPressedDispatcher.onBackPressed()

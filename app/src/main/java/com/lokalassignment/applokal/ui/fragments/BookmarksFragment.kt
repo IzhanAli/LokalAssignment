@@ -27,7 +27,7 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(JobViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(JobViewModel::class.java)
 
         recyclerView = view.findViewById(R.id.recycler)
         placeholder = view.findViewById(R.id.placeholderlist)
