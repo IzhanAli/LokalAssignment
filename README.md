@@ -1,7 +1,10 @@
 ## Lokal Assignment 
 This repo contains the source code as well as video demo and APK [here](https://github.com/IzhanAli/LokalAssognment/tree/main/demo)
 
-### Video demo: https://github.com/IzhanAli/LokalAssognment/raw/main/demo/Screen_recording_20240828_181238.mp4
+### Video demo: 
+https://github.com/IzhanAli/LokalAssignment/blob/main/demo/Final.mp4
+
+The above screen recording demonstrates the app and when we scroll the data is loaded with pagination from our `JobPagingSource` factory asynchronously. When we open a listing detailed information is shown to the user and if we want to save a listing offline we can tap save and that listing will be stored in Room database (here the JobDetail object is converted to String using Gson and saved) for offline viewing
 
 ### Tech Stack:
 - Kotlin as programming language
@@ -14,7 +17,7 @@ This repo contains the source code as well as video demo and APK [here](https://
 
 Further scope:
 - Address edge cases
-- State Management
+- Error messages
 
 
 ### Functional Requirements [<i>Completed</i>]
