@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lokalassignment.applokal.R
 import com.lokalassignment.applokal.adapter.JobAdapter
+import com.lokalassignment.applokal.databinding.FragmentBookmarksBinding
 import com.lokalassignment.applokal.models.JobDetail
 import com.lokalassignment.applokal.ui.MainActivity
 import com.lokalassignment.applokal.viewmodel.JobViewModel
@@ -24,22 +25,37 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
     private lateinit var recyclerView: RecyclerView
     private lateinit var placeholder: LinearLayout
 
+    private var _binding: FragmentBookmarksBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+
+        _binding = FragmentBookmarksBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(JobViewModel::class.java)
 
-        recyclerView = view.findViewById(R.id.recycler)
-        placeholder = view.findViewById(R.id.placeholderlist)
+        initViews()
+
         placeholder.visibility = View.VISIBLE
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
         observe();
 
 
 
     }
 
+    private fun initViews() {
+        recyclerView = binding.recycler
+        placeholder = binding.placeholderlist
+    }
 
 
     private fun observe() {
@@ -64,6 +80,13 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
                 recyclerView.visibility = View.GONE
                 placeholder.visibility = View.VISIBLE
             }
+
+            if (recyclerView.adapter?.itemCount == 0) {
+                placeholder.visibility = View.VISIBLE
+            }else{
+                placeholder.visibility = View.GONE
+            }
+
         }
     }
 

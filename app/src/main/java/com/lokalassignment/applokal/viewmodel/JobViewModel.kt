@@ -8,12 +8,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
 import com.google.gson.Gson
 import com.lokalassignment.applokal.data.JobsDatabase
 import com.lokalassignment.applokal.models.JobDetail
 import com.lokalassignment.applokal.models.JobEntity
 import com.lokalassignment.applokal.retrofit.RetrofitInstance
 import com.lokalassignment.applokal.util.JobDAO
+import com.lokalassignment.applokal.util.JobPagingSource
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.io.IOException
@@ -21,8 +25,6 @@ import java.io.IOException
 
 class JobViewModel(application: Application): AndroidViewModel(application){
 
-    private val _apiStatus = MutableLiveData<APIState>()
-    val apiStatus: LiveData<APIState> get() = _apiStatus
 
     private val jobDao: JobDAO = JobsDatabase.getDatabase(application).jobDAO()
 
@@ -36,42 +38,18 @@ class JobViewModel(application: Application): AndroidViewModel(application){
     private val _saved = MutableLiveData<ArrayList<JobDetail>?>()
     val saved: LiveData<ArrayList<JobDetail>?> get() = _saved
     init {
-        fetchListings()
+        //fetchListings()
         fetchSaved()
         Log.d("JobViewModel", "JobDao initialized: $jobDao")
 
     }
+    private val pager = Pager(
+        config = PagingConfig(pageSize = 20, enablePlaceholders = false),
+        pagingSourceFactory = { JobPagingSource(RetrofitInstance.api) }
+    )
 
-    private fun fetchListings() {
-        viewModelScope.launch {
-            _apiStatus.value = APIState.Loading
-            try {
-                val response = RetrofitInstance.api.getListings()
-                if (response.isSuccessful && response.body() != null) {
-                    val obj = response.body()!!
+    val jobFlow = pager.flow.cachedIn(viewModelScope)
 
-                    if (obj.results.isNotEmpty()) {
-                        Log.i("API", obj.results.size.toString())
-                        _apiStatus.value = APIState.Success(obj.results)
-                    } else {
-                        Log.e("API", response.body().toString())
-                        _apiStatus.value = APIState.Error("No Jobs Found")
-                    }
-
-                } else {
-                    Log.e("API", response.body().toString())
-                    _apiStatus.value = APIState.Error("Invalid response from server")
-                }
-            }catch (e: IOException){
-                Log.e("API", e.message.toString())
-                _apiStatus.value = APIState.Error("Please check your internet connection")
-            } catch (e: Exception){
-                Log.e("API", e.message.toString())
-                _apiStatus.value = APIState.Error(e.message.toString())
-            }
-
-        }
-    }
 
 
 
@@ -124,9 +102,4 @@ class JobViewModel(application: Application): AndroidViewModel(application){
 
 
 
-}
-sealed class APIState {
-    data object Loading : APIState()
-    data class Success(val jobs: List<JobDetail>) : APIState()
-    data class Error(val message: String) : APIState()
 }

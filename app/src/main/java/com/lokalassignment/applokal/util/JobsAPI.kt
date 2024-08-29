@@ -10,6 +10,6 @@ interface JobsAPI {
     @GET("common/jobs")
     suspend fun getListings(
         @Query("page")
-        page: Int = 1
+        page: Int
     ): Response<APIResponse>
 }

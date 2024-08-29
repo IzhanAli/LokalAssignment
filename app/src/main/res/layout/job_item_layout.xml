@@ -120,15 +120,23 @@
                 app:icon="@drawable/whatsapp"
                 app:strokeWidth="2dp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_alignParentEnd="true"
-                android:id="@+id/btnsave"
-                android:layout_below="@id/imageView"
-                style="@style/Widget.Material3.Button.IconButton.Outlined"
-                app:icon="@drawable/twotone_bookmark_24"/>
+
+
+           <com.google.android.material.checkbox.MaterialCheckBox
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="12dp"
+               android:layout_alignParentEnd="true"
+               android:id="@+id/btnsave"
+               android:layout_below="@id/imageView"
+               android:button="@drawable/bookmark_selector"
+               android:checked="false"
+               style="@style/Widget.Material3.Button.IconButton.Outlined"
+               android:buttonTint="@color/my_light_primary"
+               android:drawableTint="@color/my_light_primary"
+               android:foregroundTint="@color/my_light_primary"
+               android:backgroundTint="@color/my_light_primary"/>
+
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 

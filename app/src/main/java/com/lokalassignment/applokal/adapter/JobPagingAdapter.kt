@@ -7,25 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.facebook.shimmer.Shimmer
-import com.facebook.shimmer.ShimmerDrawable
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.lokalassignment.applokal.R
 import com.lokalassignment.applokal.models.JobDetail
 
-class JobAdapter(
-    private val jobs: List<JobDetail>,
-    private val onItemClick: (JobDetail) -> Unit,
-    private val onSaveClick: (JobDetail) -> Unit,
-    private val isJobSaved: (Int, (Boolean) -> Unit) -> Unit
-) :
-    RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
+class JobPagingAdapter(private val onItemClick: (JobDetail) -> Unit,
+                       private val onSaveClick: (JobDetail) -> Unit,
+                       private val isJobSaved: (Int, (Boolean) -> Unit) -> Unit) :
+    PagingDataAdapter<JobDetail, JobPagingAdapter.JobViewHolder>(JOB_COMPARATOR) {
 
     inner class JobViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val role = itemView.findViewById<TextView>(R.id.textView_title)
@@ -67,35 +63,46 @@ class JobAdapter(
                 }
 
 
-                isJobSaved(job.id!!) { saved ->
+                isJobSaved(job.id!!){ saved ->
 
-                    save.isChecked = saved
+                  save.isChecked = saved
 
                 }
+
+
                 save.setOnClickListener {
                     onSaveClick(job)
                 }
 
-            } else {
+
+            }else{
                 ui.visibility = View.GONE
                 Glide.with(itemView).load(job.creatives?.get(0)?.imageUrl).into(img)
                 img.visibility = View.VISIBLE
 
             }
         }
-
-
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.job_item_layout, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.job_item_layout, parent, false)
         return JobViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: JobViewHolder, position: Int) {
-        holder.bind(jobs[position])
+        val job = getItem(position)
+        job?.let { holder.bind(it) }
     }
 
-    override fun getItemCount() = jobs.size
+    companion object {
+        private val JOB_COMPARATOR = object : DiffUtil.ItemCallback<JobDetail>() {
+            override fun areItemsTheSame(oldItem: JobDetail, newItem: JobDetail): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: JobDetail, newItem: JobDetail): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
+
 }
